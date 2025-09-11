@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTATO KREZZZ - Snack Keripik Kentang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #fca311; /* Warm gold/orange */
+            --secondary-color: #cccccc; /* Light gray for text on dark */
+            --accent-color: #e53e3e; /* Original red for pop */
+            --light-color: #343a40; /* Darker background, almost black */
+            --dark-color: #000000; /* Main background - BLACK */
+            --text-color: #f8f9fa; /* Light text */
+            --card-bg: #1a1a1a; /* Card background - very dark gray */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--dark-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        /* CSS untuk logo Hotato Krezzz di navbar */
+        .navbar-brand img {
+            height: 40px; /* Sesuaikan tinggi logo sesuai kebutuhan */
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffb703;
+            border-color: #ffb703;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: url('hotato.png') no-repeat center center/cover; /* Pastikan nama file gambarnya benar */
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Sesuaikan tingkat kegelapan di sini */
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(10, 8, 8);
+            z-index: 2; /* Pastikan overlay konten di atas overlay gelap */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 30px; /* Padding lebih besar untuk area teks */
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.6); /* Background semi-transparan untuk teks */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Tambah bayangan untuk efek "block" */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            color: var(--primary-color);
+        }
+
+        .hero-content p.lead {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Jarak antara tombol */
+            margin-top: 2rem;
+        }
+
+        .shopee-link {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .shopee-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .shopee-icon {
+            width: 100px;
+            transition: transform 0.3s ease;
+        }
+        
+        .shopee-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white; /* UBAH JADI PUTIH */
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+            border: 1px solid #495057;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--secondary-color);
+        }
+
+        .service-card {
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: var(--card-bg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card h3 {
+            color: var(--primary-color);
+        }
+        
+        .service-card p {
+            color: var(--secondary-color);
+        }
+
+        .service-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(252, 163, 17, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h4, .portfolio-overlay p {
+            color: #000000;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .configurator {
+            background-color: var(--dark-color);
+            padding: 80px 0;
+        }
+        
+        .configurator .bg-dark {
+            background-color: var(--card-bg) !important;
+            border: 1px solid #495057;
+        }
+        
+        .configurator h3 {
+            color: var(--primary-color);
+        }
+        
+        .configurator p, .configurator li {
+            color: var(--secondary-color);
+        }
+        
+        .configurator .form-control {
+            background-color: #343a40; /* Input background */
+            border-color: #495057;
+            color: var(--text-color);
+        }
+        .configurator .form-label {
+            color: var(--secondary-color); /* Label text color */
+        }
+
+        .contact-info {
+            background-color: var(--dark-color); /* Sudah hitam */
+            padding: 80px 0;
+        }
+        
+        .contact-info .info-card {
+            background-color: var(--card-bg);
+            border: 1px solid #000000;
+        }
+        
+        .contact-info h3, .contact-info h4 {
+            color: var(--primary-color);
+        }
+        
+        .contact-info p {
+            color: var(--secondary-color); /* UBAH JADI SECONDARY-COLOR UNTUK KONTRAST */
+        }
+        
+        .contact-info .table {
+            color: var(--secondary-color); /* Warna teks tabel menjadi abu-abu terang */
+        }
+
+        .contact-info .table td {
+            color: var(--secondary-color); /* Pastikan sel tabel juga abu-abu terang */
+        }
+        
+        .contact-info .form-control {
+            background-color: #343a40; /* Input background */
+            border-color: #495057;
+            color: var(--text-color);
+        }
+        
+        .contact-info .form-label {
+            color: var(--secondary-color); /* UBAH JADI SECONDARY-COLOR UNTUK KONTRAST */
+        }
+        
+        /* Tambahan untuk teks "Lokasi Kami" di bagian peta */
+        .contact-info .bg-dark h3 {
+            color: white !important; /* Pastikan judul Lokasi Kami putih di atas background abu */
+        }
+
+
+        .info-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: rgb(255, 255, 255);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+        }
+
+        .chatbot-icon {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background-color: var(--dark-color); /* Sudah hitam */
+            color: var(--secondary-color);
+            padding: 50px 0 20px;
+            border-top: 1px solid #495057;
+        }
+        
+        footer h4, footer h5 {
+            color: var(--primary-color);
+        }
+
+        footer .list-unstyled a {
+            color: var(--secondary-color) !important;
+            transition: color 0.3s ease;
+        }
+
+        footer .list-unstyled a:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .social-icons a {
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .navbar-brand img {
+                height: 35px; /* Sedikit lebih kecil di HP */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo-hotato.png" alt="HOTATO KREZZZ Logo"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#flavors">Varian</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reseller">Reseller</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-primary ms-3">Beli Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>HOTATO KREZZZ: Sensasi Krezzz-nya Bikin Nagih!</h1>
+                <p class="lead">Snack keripik kentang premium dengan irisan tipis dan bumbu melimpah, bikin ketagihan di setiap gigitan.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#flavors" class="btn btn-primary btn-lg">Lihat Varian Rasa</a>
+                    <a href="#" target="_blank" class="text-decoration-none shopee-link text-center">
+                        <img src="shopee.png" alt="Beli di Shopee" class="shopee-icon mb-2">
+                        <br>Klik di sini untuk beli di Shopee
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Kenapa Pilih Hotato Krezzz?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Terbuat dari Kentang Pilihan</h3>
+                        <p>Kami hanya menggunakan kentang terbaik untuk memastikan kualitas dan rasa yang tak tertandingi.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Bumbu Melimpah</h3>
+                        <p>Setiap kepingan keripik dilapisi bumbu istimewa yang kaya rasa dan bikin nagih.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sack-dollar"></i>
+                        </div>
+                        <h3>Harga Terjangkau</h3>
+                        <p>Nikmati keripik kentang premium tanpa harus menguras dompet. Kualitas bintang lima, harga kaki lima.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flavors" class="py-5 bg-dark"> 
+
+<div class="container">
+            <h2 class="section-title">Varian Rasa Hotato Krezzz</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-card">
+                        <img src="original.jpg" alt="Rasa Original" class="service-img w-100">
+                        <div class="p-4">
+                            <h3>Rasa Original</h3>
+                            <p>Gurih alami dari kentang dan garam, untuk kamu yang suka rasa klasik.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-card">
+                        <img src="balado.jpg" alt="Rasa Balado" class="service-img w-100">
+                        <div class="p-4">
+                            <h3>Rasa Balado</h3>
+                            <p>Perpaduan rasa pedas manis yang bikin lidah bergoyang, favorit semua orang.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-card">
+                        <img src="sapi.jpg" alt="Rasa Sapi Panggang" class="service-img w-100">
+                        <div class="p-4">
+                            <h3>Rasa Sapi Panggang</h3>
+                            <p>Keripik dengan sensasi rasa sapi panggang yang kaya dan lezat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-card">
+                        <img src="jagungbakar.jpg" alt="Rasa Jagung Bakar" class="service-img w-100">
+                        <div class="p-4">
+                            <h3>Rasa Jagung Bakar</h3>
+                            <p>Rasa manis dan smoky dari jagung bakar yang unik dan menggugah selera.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reseller" class="configurator">
+        <div class="container">
+            <h2 class="section-title">Jadi Bagian Hotato Krezzz!</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="bg-dark p-4 rounded shadow-sm h-100">
+                        <h3>Peluang Reseller Hotato Krezzz</h3>
+                        <p>Tertarik untuk menjual produk kami? Dapatkan harga spesial dan dukungan penuh dari tim kami.</p>
+                        <div class="mb-4">
+                            <h5>Keuntungan Menjadi Reseller</h5>
+                            <ul>
+                                <li>Harga distributor khusus</li>
+                                <li>Margin keuntungan menarik</li>
+                                <li>Dukungan pemasaran dan promosi</li>
+                                <li>Produk yang disukai banyak orang</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>Informasi Tambahan</h5>
+                            <p>Untuk menjadi reseller, Anda cukup mengisi formulir di samping. Tim kami akan segera menghubungi Anda untuk detail lebih lanjut.</p>
+                            <p>Minimum order awal hanya <span class="fw-bold text-primary">100 pcs</span> dengan varian rasa yang bisa dicampur.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="bg-dark p-4 rounded shadow-sm h-100">
+                        <h3>Formulir Reseller</h3>
+                        <form id="order-form" class="mt-4">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Nomor Telepon/WhatsApp</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Jumlah Order (pcs)</label>
+                                <input type="number" class="form-control" id="quantity" min="100" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">Pesan Anda</label>
+                                <textarea class="form-control" id="notes" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Kirim Permintaan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-info">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Alamat</h4>
+                        <p>Depan Mushola Al Ikhlas,  Dsn. Pringgodani Rt 13 Rw 02, Ds. Bakung Pringgodani, Kec. Balongbendo, Kab. Sidoarjo 61263</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Telepon</h4>
+                        <p>(087874722632)</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>info@hotatokrezzz.com</p>
+                        <p>sales@hotatokrezzz.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="bg-dark p-4 rounded shadow-sm h-100">
+                        <h3>Jam Operasional</h3>
+                        <table class="table">
+                            <tr>
+                                <td>Senin - Jumat</td>
+                                <td>09:00 - 17:00 WIB</td>
+                            </tr>
+                            <tr>
+                                <td>Sabtu</td>
+                            <td>09:00 - 14:00 WIB</td>
+                            </tr>
+                            <tr>
+                                <td>Minggu & Hari Libur</td>
+                                <td>Tutup</td>
+                            </tr>
+                        </table>
+                        
+                        <h3 class="mt-4">Kirim Pesan</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="contact-name" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="contact-name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="contact-email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-phone" class="form-label">Nomor Telepon</label>
+                                <input type="tel" class="form-control" id="contact-phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Pesan</label>
+                                <textarea class="form-control" id="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="bg-dark p-4 rounded shadow-sm h-100">
+                        <h3>Lokasi Kami</h3> 
+
+<div class="ratio ratio-16x9">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5211049046075!2d112.49893979999999!3d-7.4074295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e780ee7146187b7%3A0x34e1c65ed155b8b5!2smusholla%20al%20ikhlas%20pringgodani!5e0!3m2!1sid!2sid!4v1757571849191!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>HOTATO KREZZZ</h4>
+                    <p>Snack keripik kentang dengan rasa yang bikin nagih! Cocok untuk menemani setiap momen santai Anda.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white text-decoration-none">Beranda</a></li>
+                        <li><a href="#flavors" class="text-white text-decoration-none">Varian</a></li>
+                        <li><a href="#reseller" class="text-white text-decoration-none">Reseller</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Info Lainnya</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#reseller" class="text-white text-decoration-none">Reseller</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Karir</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Ikuti Kami</h5>
+                    <div class="d-flex social-icons">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-tiktok fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center py-3">
+                <p class="mb-0 text-secondary">© 2023 HOTATO KREZZZ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6287874722632" class="chatbot" target="_blank" rel="noopener noreferrer">
+        <div class="chatbot-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission for Reseller
+            document.getElementById('order-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Terima kasih! Permintaan reseller Anda telah kami terima. Kami akan segera menghubungi Anda.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
