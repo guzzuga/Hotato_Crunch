@@ -1,7 +1,13 @@
 {
   "functions": {
-    "process_reseller_form.php": {
+    "api/process_reseller_form.php": {
       "runtime": "vercel-php@0.7.4"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/process_reseller_form.php",
+      "destination": "/api/process_reseller_form.php"
+    }
+  ]
 }
