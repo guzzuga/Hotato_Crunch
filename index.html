@@ -209,6 +209,28 @@
             transform: translateY(-10px);
         }
 
+        /* Hapus atau komentari bagian ini: */
+        /*
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100%;
+            height: 100%;
+            background-color: #343a40;
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            top: 5px;
+            left: 5px;
+        }
+        */
+
         .service-card h3 {
             color: var(--primary-color);
         }
@@ -625,26 +647,26 @@
                 <div class="col-lg-6">
                     <div class="bg-dark p-4 rounded shadow-sm h-100">
                         <h3>Formulir Reseller</h3>
-                        <form id="order-form" class="mt-4" method="POST" action="/process_reseller_form.php">
+                        <form id="order-form" class="mt-4">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="name" name="nama" required>
+                                <input type="text" class="form-control" id="name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Nomor Telepon/WhatsApp</label>
-                                <input type="tel" class="form-control" id="phone" name="hp" required>
+                                <input type="tel" class="form-control" id="phone" required>
                             </div>
                             <div class="mb-3">
                                 <label for="quantity" class="form-label">Jumlah Order (pcs)</label>
-                                <input type="number" class="form-control" id="quantity" name="order" min="100" required>
+                                <input type="number" class="form-control" id="quantity" min="100" required>
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Pesan Anda</label>
-                                <textarea class="form-control" id="notes" name="pesan" rows="3"></textarea>
+                                <textarea class="form-control" id="notes" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Kirim Permintaan</button>
                         </form>
@@ -769,6 +791,29 @@
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('order-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Ambil data dari formulir
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const quantity = document.getElementById('quantity').value;
+                const notes = document.getElementById('notes').value;
+
+                // Buat pesan WhatsApp
+                const message = `Halo, saya tertarik untuk menjadi reseller Hotato Crunch.%0A%0ANama Lengkap: ${name}%0AEmail: ${email}%0ANomor HP: ${phone}%0AJumlah Order: ${quantity} pcs%0APesan: ${notes}%0A%0AMohon info lebih lanjut mengenai prosesnya. Terima kasih.`;
+
+                // Buat tautan WhatsApp dengan pesan terisi otomatis
+                const whatsappUrl = `https://wa.me/6287874722632?text=${encodeURIComponent(message)}`;
+
+                // Arahkan pengguna ke tautan WhatsApp
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+    </script>
 </body>
 </html>
-
